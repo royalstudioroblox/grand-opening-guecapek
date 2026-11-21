@@ -169,7 +169,6 @@
       box-shadow: var(--glass-shadow), var(--glass-highlight);
     }
 
-    /* Efek bernapas lembut pada border kaca */
     .glass-live {
       overflow: hidden;
       animation: glassBreathe 8s ease-in-out infinite alternate;
@@ -186,7 +185,6 @@
       }
     }
 
-    /* Kilau kaca halus (shimmer) yang melintas otomatis perlahan */
     .glass-live::after {
       content: "";
       position: absolute;
@@ -421,7 +419,7 @@
       z-index: 10;
       max-width: 840px;
       margin: 0 auto;
-      padding: 32px 18px 88px;
+      padding: 32px 18px 96px;
       display: flex;
       flex-direction: column;
       gap: 28px;
@@ -735,7 +733,6 @@
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
     }
 
-    /* Slide-reveal untuk input username */
     .usn-reveal {
       margin-top: 12px;
       overflow: hidden;
@@ -805,7 +802,6 @@
       cursor: not-allowed;
     }
 
-    /* Status Sukses pada Tombol Kirim */
     .submit-btn.sent-success {
       background: linear-gradient(135deg, rgba(34, 197, 94, 0.28) 0%, rgba(22, 163, 74, 0.18) 100%);
       border-color: rgba(74, 222, 128, 0.6);
@@ -908,6 +904,62 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
+    }
+
+    /* ===== FLOATING LIQUID GLASS MUSIC BUTTON ===== */
+    .music-fab {
+      position: fixed;
+      bottom: max(20px, env(safe-area-inset-bottom) + 12px);
+      right: 20px;
+      z-index: 45;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 600;
+      font-family: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: opacity 0.45s ease, transform 0.45s var(--ios-spring), background 0.3s ease;
+    }
+
+    .music-fab.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .music-fab:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .eq-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 14px;
+    }
+
+    .eq-bars span {
+      width: 3px;
+      height: 4px;
+      border-radius: 99px;
+      background: #fbbf24;
+      transition: height 0.25s ease;
+    }
+
+    .music-fab.playing .eq-bars span:nth-child(1) { animation: eqBounce 0.7s ease-in-out infinite alternate; }
+    .music-fab.playing .eq-bars span:nth-child(2) { animation: eqBounce 0.55s ease-in-out 0.15s infinite alternate; }
+    .music-fab.playing .eq-bars span:nth-child(3) { animation: eqBounce 0.8s ease-in-out 0.3s infinite alternate; }
+
+    @keyframes eqBounce {
+      0% { height: 4px; }
+      100% { height: 14px; }
     }
   </style>
 </head>
@@ -1193,6 +1245,18 @@
     <img id="lightboxImg" src="" alt="Preview Foto Map" />
   </div>
 
+  <!-- Background Audio & Floating Control -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/bgm.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button type="button" class="glass-pill music-fab" id="musicToggle" aria-label="Putar atau jeda musik">
+    <div class="eq-bars" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <span id="musicLabel">Music Off</span>
+  </button>
+
   <script>
     // =========================================================
     // 1. KONFIGURASI — URL APPS SCRIPT & DAFTAR FOTO (.png)
@@ -1245,19 +1309,46 @@
     setInterval(updateCountdown, 1000);
 
     // =========================================================
-    // 4. INTERAKSI SWIPE UP / UNLOCK COVER (MOUSE DRAG + TOUCH + SCROLL + KLIK)
+    // 4. AUDIO & INTERAKSI SWIPE UP / UNLOCK COVER
     // =========================================================
     const coverScreen = document.getElementById("coverScreen");
     const unlockTrigger = document.getElementById("unlockTrigger");
+    const bgMusic = document.getElementById("bgMusic");
+    const musicToggle = document.getElementById("musicToggle");
+    const musicLabel = document.getElementById("musicLabel");
+    bgMusic.volume = 0.45;
+
     let startY = 0;
     let currentY = 0;
     let isDragging = false;
+
+    function playMusic() {
+      bgMusic.play().then(() => {
+        musicToggle.classList.add("playing");
+        musicLabel.textContent = "Playing";
+      }).catch(() => {
+        musicToggle.classList.remove("playing");
+        musicLabel.textContent = "Play Music";
+      });
+    }
+
+    musicToggle.addEventListener("click", () => {
+      if (bgMusic.paused) {
+        playMusic();
+      } else {
+        bgMusic.pause();
+        musicToggle.classList.remove("playing");
+        musicLabel.textContent = "Paused";
+      }
+    });
 
     function unlockCover() {
       coverScreen.style.transition = "";
       coverScreen.style.transform = "";
       coverScreen.classList.add("unlocked");
       document.body.classList.remove("locked");
+      musicToggle.classList.add("show");
+      playMusic();
     }
 
     unlockTrigger.addEventListener("click", unlockCover);
