@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Grand Opening — gue capek. | Roblox Map</title>
+  <meta name="description" content="Undangan Digital Grand Opening Roblox Map gue capek. 4 & 5 Desember 2026, 20:00 - 22:00 WIB." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-base: #070709;
+      --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.03) 100%);
+      --glass-bg-strong: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.05) 100%);
+      --glass-border: rgba(255, 255, 255, 0.16);
+      --glass-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.32), inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+      --glass-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      --text-primary: #f5f5f7;
+      --text-secondary: rgba(245, 245, 247, 0.68);
+      --accent-warm: #f59e0b;
+      --accent-glow: rgba(245, 158, 11, 0.28);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-pill: 999px;
+      --ios-spring: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Plus Jakarta Sans", sans-serif;
+    }
+
+    body {
+      min-height: 100dvh;
+      overflow-x: hidden;
+      background: var(--bg-base);
+      line-height: 1.55;
+    }
+
+    body.locked {
+      overflow: hidden;
+      height: 100dvh;
+    }
+
+    /* ===== LIQUID AMBIENT BACKGROUND ===== */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(95px);
+      opacity: 0.48;
+      will-change: transform;
+      animation: floatOrb 18s ease-in-out infinite alternate;
+    }
+
+    .orb-1 {
+      width: 460px;
+      height: 460px;
+      background: radial-gradient(circle, #d97706 0%, transparent 70%);
+      top: -120px;
+      left: -100px;
+    }
+
+    .orb-2 {
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, #7c2d12 0%, transparent 70%);
+      bottom: -140px;
+      right: -120px;
+      animation-delay: -6s;
+    }
+
+    .orb-3 {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, #334155 0%, transparent 70%);
+      top: 42%;
+      left: 55%;
+      animation-delay: -12s;
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(45px, -35px, 0) scale(1.12); }
+    }
+
+    /* ===== LIQUID GLASS BASE ===== */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow), var(--glass-highlight);
+    }
+
+    .glass-pill {
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      border-radius: var(--radius-pill);
+    }
+
+/* ===== COVER / LOCK SCREEN (HALAMAN 1 — HEAVY LIQUID GLASS) ===== */
+    #coverScreen {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: max(42px, env(safe-area-inset-top) + 20px) 24px max(32px, env(safe-area-inset-bottom) + 18px);
+      background: linear-gradient(
+        160deg,
+        rgba(18, 18, 24, 0.72) 0%,
+        rgba(10, 10, 14, 0.84) 50%,
+        rgba(7, 7, 10, 0.92) 100%
+      );
+      backdrop-filter: blur(55px) saturate(190%) brightness(0.85);
+      -webkit-backdrop-filter: blur(55px) saturate(190%) brightness(0.85);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18);
+      transition: transform 0.75s var(--ios-spring), opacity 0.65s ease;
+      touch-action: none;
+      user-select: none;
+      cursor: grab;
+      overflow: hidden;
+    }
+
+    #coverScreen:active {
+      cursor: grabbing;
+    }
+
+    #coverScreen::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      z-index: -1;
+      background:
+        radial-gradient(circle at 22% 20%, rgba(245, 158, 11, 0.24), transparent 45%),
+        radial-gradient(circle at 80% 78%, rgba(180, 83, 9, 0.22), transparent 50%),
+        url('assets/thumbnail.png') center/cover no-repeat;
+      filter: blur(38px) saturate(140%);
+      opacity: 0.45;
+      transform: scale(1.1);
+      pointer-events: none;
+    }
+
+    #coverScreen.unlocked {
+      transform: translateY(-105%) !important;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cover-top {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fde68a;
+    }
+
+    .cover-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    /* Ukuran logo putih diperbesar */
+    .cover-logo {
+      width: min(480px, 88vw);
+      height: auto;
+      filter: drop-shadow(0 14px 36px rgba(0, 0, 0, 0.6));
+      margin-bottom: 14px;
+      pointer-events: none;
+      animation: logoFloat 4.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoFloat {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .cover-title {
+      font-size: clamp(1.35rem, 4vw, 1.9rem);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.72) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .cover-schedule {
+      padding: 14px 24px;
+      border-radius: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .cover-schedule strong {
+      font-size: 15px;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .cover-schedule span {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Countdown iOS style */
+    .countdown {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .cd-box {
+      min-width: 64px;
+      padding: 10px 8px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .cd-num {
+      display: block;
+      font-size: 20px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cd-lbl {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+    }
+
+    /* Swipe Up Prompt */
+    .swipe-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .swipe-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s var(--ios-spring), background 0.3s ease;
+    }
+
+    .swipe-btn:hover {
+      transform: scale(1.04);
+    }
+
+    .swipe-chevron {
+      animation: bounceUp 1.6s infinite;
+    }
+
+    @keyframes bounceUp {
+      0%, 100% { transform: translateY(2px); opacity: 0.65; }
+      50% { transform: translateY(-4px); opacity: 1; }
+    }
+
+    .home-indicator {
+      width: 134px;
+      height: 5px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    main {
+      position: relative;
+      z-index: 10;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 32px 18px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* Floating Top Nav */
+    .top-bar {
+      position: sticky;
+      top: 14px;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+    }
+
+    .top-bar img {
+      height: 26px;
+      width: auto;
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.92);
+      color: #09090b;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.25s var(--ios-spring);
+    }
+
+    .nav-cta:hover {
+      transform: scale(1.04);
+    }
+
+    /* Section Card */
+    .section-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fbbf24;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 14.5px;
+      margin-bottom: 22px;
+    }
+
+    /* Hero Thumbnail Preview */
+    .hero-thumb {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      margin-bottom: 22px;
+      aspect-ratio: 16 / 9;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Event Strip */
+    .event-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 26px;
+    }
+
+    .event-pill-box {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .event-pill-box small {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .event-pill-box strong {
+      font-size: 14.5px;
+      color: #fff;
+    }
+
+    /* Features Bento Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .features-grid, .event-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-item {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.045);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      transition: transform 0.3s var(--ios-spring), background 0.3s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .feature-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.28);
+      font-size: 17px;
+    }
+
+    .feature-item h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      color: #fff;
+    }
+
+    .feature-item p {
+      font-size: 12.5px;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    /* Showcase Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 520px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ios-spring);
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(5, 5, 8, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 94vw;
+      max-height: 86vh;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    /* ===== RSVP FORM ===== */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .form-label span {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    .glass-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-size: 14.5px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .glass-input::placeholder {
+      color: rgba(255, 255, 255, 0.36);
+    }
+
+    .glass-input:focus {
+      border-color: rgba(251, 191, 36, 0.65);
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.16);
+    }
+
+    /* iOS Segmented Control */
+    .segmented {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 5px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .seg-btn {
+      padding: 12px 14px;
+      border-radius: 13px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s var(--ios-spring);
+    }
+
+    .seg-btn.active {
+      background: rgba(255, 255, 255, 0.92);
+      color: #09090b;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Time Presets Grid */
+    .time-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .pill-choice {
+      padding: 11px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.25s var(--ios-spring);
+    }
+
+    .pill-choice:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .pill-choice.active {
+      background: rgba(251, 191, 36, 0.2);
+      border-color: rgba(251, 191, 36, 0.75);
+      color: #fef3c7;
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.2);
+    }
+
+    .schedule-fields {
+      transition: opacity 0.35s ease, max-height 0.45s var(--ios-spring);
+      overflow: hidden;
+      max-height: 600px;
+    }
+
+    .schedule-fields.hidden {
+      opacity: 0;
+      max-height: 0;
+      margin-bottom: 0;
+      pointer-events: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: linear-gradient(135deg, #ffffff 0%, #e4e4e7 100%);
+      color: #09090b;
+      font-size: 15px;
+      font-weight: 800;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.25s var(--ios-spring), opacity 0.25s ease;
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.015);
+    }
+
+    .submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-status {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: none;
+      text-align: center;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(34, 197, 94, 0.16);
+      border: 1px solid rgba(34, 197, 94, 0.45);
+      color: #bbf7d0;
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.16);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      color: #fecaca;
+    }
+
+    /* ===== SOCIAL & SUPPORT LINKS ===== */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 560px) {
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      text-decoration: none;
+      transition: transform 0.3s var(--ios-spring), background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .link-card:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .link-card.donate {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.08) 100%);
+      border-color: rgba(251, 191, 36, 0.4);
+    }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .link-left strong {
+      display: block;
+      font-size: 14.5px;
+    }
+
+    .link-left span {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      padding-top: 8px;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px) scale(0.985);
+      transition: opacity 0.7s var(--ios-spring), transform 0.7s var(--ios-spring);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  </style>
+</head>
+<body class="locked">
+
+  <!-- Ambient Liquid Background -->
+  <div class="ambient-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- ===== HALAMAN 1: COVER / SWIPE TO UNLOCK ===== -->
+  <section id="coverScreen" aria-label="Undangan Pembuka">
+    <div class="cover-top">
+      <div class="glass-pill cover-badge">Official Digital Invitation</div>
+    </div>
+
+    <div class="cover-center">
+      <img src="assets/logo-putih.png" alt="Logo gue capek." class="cover-logo" />
+      <h1 class="cover-title">GRAND OPENING ROBLOX MAP</h1>
+
+      <div class="glass cover-schedule">
+        <strong>4 &amp; 5 Desember 2026</strong>
+        <span>20:00 WIB – 22:00 WIB</span>
+      </div>
+
+      <div class="countdown" id="countdown">
+        <div class="glass cd-box"><span class="cd-num" id="cdDays">00</span><span class="cd-lbl">Hari</span></div>
+        <div class="glass cd-box"><span class="cd-num" id="cdHours">00</span><span class="cd-lbl">Jam</span></div>
+        <div class="glass cd-box"><span class="cd-num" id="cdMins">00</span><span class="cd-lbl">Menit</span></div>
+        <div class="glass cd-box"><span class="cd-num" id="cdSecs">00</span><span class="cd-lbl">Detik</span></div>
+      </div>
+    </div>
+
+    <div class="swipe-area" id="unlockTrigger">
+      <button type="button" class="glass-pill swipe-btn">
+        <span class="swipe-chevron">⌃</span>
+        <span>Geser ke atas untuk membuka</span>
+      </button>
+      <div class="home-indicator"></div>
+    </div>
+  </section>
+
+  <!-- ===== HALAMAN UTAMA ===== -->
+  <main>
+    <!-- Sticky Glass Header -->
+    <header class="glass top-bar">
+      <img src="assets/logo-putih.png" alt="gue capek." />
+      <a href="#rsvp" class="nav-cta">Konfirmasi Hadir</a>
+    </header>
+
+    <!-- Tentang Map & Fitur Unggulan -->
+    <section class="glass section-card reveal">
+      <div class="section-eyebrow">Tentang Experience</div>
+      <h2 class="section-title">Selamat Datang di gue capek. 🙏</h2>
+      <p class="section-desc">
+        Kami mengundang rekan-rekan clan, komunitas, kreator, dan pemain Roblox untuk hadir memeriahkan Grand Opening map <strong>gue capek.</strong> — tempat santai bernuansa rumah vintage untuk mendengarkan musik, ngobrol, dan foto bareng.
+      </p>
+
+      <div class="hero-thumb">
+        <img src="assets/thumbnail.png" alt="Thumbnail Map gue capek." />
+      </div>
+
+      <div class="event-strip">
+        <div class="event-pill-box">
+          <small>Tanggal Acara</small>
+          <strong>4 &amp; 5 Desember 2026 (2 Hari)</strong>
+        </div>
+        <div class="event-pill-box">
+          <small>Waktu</small>
+          <strong>20:00 WIB – 22:00 WIB</strong>
+        </div>
+      </div>
+
+      <div class="section-eyebrow">Fitur Unggulan Map</div>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">⚡</div>
+          <div>
+            <h4>Map Ringan (Device Friendly)</h4>
+            <p>Dioptimalkan agar tetap lancar dan nyaman dimainkan di berbagai perangkat PC maupun HP.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎵</div>
+          <div>
+            <h4>700++ Lagu</h4>
+            <p>Koleksi ratusan lagu siap menemani waktu santai dan nongkrong bareng teman.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">💿</div>
+          <div>
+            <h4>Pop Lawas &amp; Era Covid-19</h4>
+            <p>Cocok buat kamu yang suka lagu pop lawas (Indo maupun luar negeri) plus lagu-lagu nostalgia era Covid-19.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🏡</div>
+          <div>
+            <h4>Nuansa Rumah &amp; Spot Foto Vintage</h4>
+            <p>Experience mendengarkan musik di dalam rumah dengan spot foto vintage yang berbeda dari map lainnya.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">👑</div>
+          <div>
+            <h4>Free VIP &amp; Title</h4>
+            <p>Nikmati akses VIP dan Title gratis tanpa ribet langsung di dalam map.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎙️</div>
+          <div>
+            <h4>Mic On (Voice Chat)</h4>
+            <p>Kalian bisa langsung voice chat dan ngobrol santai bareng komunitas di map ini.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🛡️</div>
+          <div>
+            <h4>24/7 Anti Disconnect</h4>
+            <p>Nongkrong atau AFK mendengarkan lagu tanpa khawatir terputus dari server.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🕺</div>
+          <div>
+            <h4>Support Auto Dance</h4>
+            <p>Sudah mendukung fitur Auto Dance biar suasana kumpul dan karaoke makin seru.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase Foto Map -->
+    <section class="glass section-card reveal">
+      <div class="section-eyebrow">Sneak Peek</div>
+      <h2 class="section-title">Showcase Tampilan Map</h2>
+      <p class="section-desc">Ketuk foto untuk memperbesar detail ruangan dan spot foto vintage di dalam map.</p>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </section>
+
+    <!-- Formulir RSVP -->
+    <section class="glass section-card reveal" id="rsvp">
+      <div class="section-eyebrow">Konfirmasi Kehadiran</div>
+      <h2 class="section-title">RSVP Grand Opening</h2>
+      <p class="section-desc">Isi data singkat di bawah ini supaya kami bisa menyambut clan atau komunitas kalian dengan baik.</p>
+
+      <form id="rsvpForm" novalidate>
+        <!-- Kolom 1 -->
+        <div class="form-group">
+          <label class="form-label" for="namaInput">Nama Clan / Komunitas / Map / Personal *</label>
+          <input type="text" id="namaInput" class="glass-input" placeholder="Contoh: Royal Studio / Nama Clan / Nama Kamu" required />
+        </div>
+
+        <!-- Kolom 2 -->
+        <div class="form-group">
+          <label class="form-label">Kemungkinan Kehadiran *</label>
+          <div class="segmented" id="kehadiranControl">
+            <button type="button" class="seg-btn active" data-value="Hadir">Hadir</button>
+            <button type="button" class="seg-btn" data-value="Berhalangan">Berhalangan</button>
+          </div>
+        </div>
+
+        <!-- Kolom 3 (Tanggal & Jam) -->
+        <div class="schedule-fields" id="scheduleFields">
+          <div class="form-group">
+            <label class="form-label">Pilih Tanggal Kehadiran *</label>
+            <div class="segmented" id="tanggalControl">
+              <button type="button" class="seg-btn active" data-value="4 Desember 2026">4 Desember 2026</button>
+              <button type="button" class="seg-btn" data-value="5 Desember 2026">5 Desember 2026</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Perkiraan Jam Kehadiran (WIB) *</label>
+            <div class="time-grid" id="jamControl">
+              <button type="button" class="pill-choice active" data-value="20:00 WIB">20:00 WIB</button>
+              <button type="button" class="pill-choice" data-value="20:15 WIB">20:15 WIB</button>
+              <button type="button" class="pill-choice" data-value="20:30 WIB">20:30 WIB</button>
+              <button type="button" class="pill-choice" data-value="20:45 WIB">20:45 WIB</button>
+              <button type="button" class="pill-choice" data-value="21:00 WIB">21:00 WIB</button>
+              <button type="button" class="pill-choice" data-value="21:15 WIB">21:15 WIB</button>
+              <button type="button" class="pill-choice" data-value="21:30 WIB">21:30 WIB</button>
+              <button type="button" class="pill-choice" data-value="21:45 WIB">21:45 WIB</button>
+              <button type="button" class="pill-choice" data-value="22:00 WIB">22:00 WIB</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom 4 -->
+        <div class="form-group">
+          <label class="form-label" for="sosmedInput">
+            Username TikTok / Discord <span>(Opsional — untuk menerima halaman ucapan terima kasih &amp; dokumentasi setelah acara)</span>
+          </label>
+          <input type="text" id="sosmedInput" class="glass-input" placeholder="Contoh: @username / discord_user" />
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Kirim Konfirmasi Kehadiran</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </section>
+
+    <!-- Sosial Media & Support Us -->
+    <section class="glass section-card reveal">
+      <div class="section-eyebrow">Connect &amp; Support Us</div>
+      <h2 class="section-title">Sosial Media &amp; Akses Map</h2>
+      <p class="section-desc">Ikuti perkembangan terbaru, gabung komunitas kami, atau dukung pengembangan map gue capek.</p>
+
+      <div class="links-grid">
+        <a href="https://www.roblox.com/games/119845843014923/gue-capek" target="_blank" rel="noopener" class="link-card">
+          <div class="link-left">
+            <span>🎮</span>
+            <div>
+              <strong>Mainkan Map di Roblox</strong>
+              <span>Experience gue capek.</span>
+            </div>
+          </div>
+          <span>↗</span>
+        </a>
+
+        <a href="https://discord.gg/Kga5SxF9Dy" target="_blank" rel="noopener" class="link-card">
+          <div class="link-left">
+            <span>💬</span>
+            <div>
+              <strong>Discord Server</strong>
+              <span>Gabung komunitas &amp; info event</span>
+            </div>
+          </div>
+          <span>↗</span>
+        </a>
+
+        <a href="https://www.tiktok.com/@guecapekroblox" target="_blank" rel="noopener" class="link-card">
+          <div class="link-left">
+            <span>📱</span>
+            <div>
+              <strong>TikTok</strong>
+              <span>@guecapekroblox</span>
+            </div>
+          </div>
+          <span>↗</span>
+        </a>
+
+        <a href="https://www.roblox.com/communities/601625440/ROYAL-STUDIO-1021#!/about" target="_blank" rel="noopener" class="link-card">
+          <div class="link-left">
+            <span>🏛️</span>
+            <div>
+              <strong>Community Roblox</strong>
+              <span>ROYAL STUDIO 1021</span>
+            </div>
+          </div>
+          <span>↗</span>
+        </a>
+
+        <a href="https://bagibagi.co/guecapekmainroblox" target="_blank" rel="noopener" class="link-card donate">
+          <div class="link-left">
+            <span>☕</span>
+            <div>
+              <strong>Support Us (BagiBagi IDR)</strong>
+              <span>bagibagi.co/guecapekmainroblox</span>
+            </div>
+          </div>
+          <span>↗</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2026 gue capek. 🙏 &bull; ROYAL STUDIO 1021
+    </footer>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+    <img id="lightboxImg" src="" alt="Preview Foto Map" />
+  </div>
+
+  <script>
+    // =========================================================
+    // 1. KONFIGURASI — GANTI URL APPS SCRIPT & DAFTAR FOTO DI SINI
+    // =========================================================
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx7GXpw_gx001TlRqVyadW00l8u_xdlC_M1b75OEA0F2qbehR9YQOY-mLop6hCuQID_/exec";
+
+    // Sesuaikan nama file foto showcase yang ada di dalam folder assets/
+    const SHOWCASE_PHOTOS = [
+      "assets/foto1.png",
+      "assets/foto2.png",
+      "assets/foto3.png",
+      "assets/foto4.png"
+    ];
+
+    // =========================================================
+    // 2. RENDER GALERI SHOWCASE
+    // =========================================================
+    const galleryGrid = document.getElementById("galleryGrid");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+
+    SHOWCASE_PHOTOS.forEach((src, i) => {
+      const card = document.createElement("div");
+      card.className = "gallery-card";
+      card.innerHTML = `<img src="${src}" alt="Showcase Map ${i + 1}" loading="lazy" />`;
+      card.addEventListener("click", () => {
+        lightboxImg.src = src;
+        lightbox.classList.add("open");
+      });
+      galleryGrid.appendChild(card);
+    });
+
+    // =========================================================
+    // 3. COUNTDOWN KE 4 DESEMBER 2026, 20:00 WIB (UTC+7)
+    // =========================================================
+    const eventDate = new Date("2026-12-04T20:00:00+07:00").getTime();
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = Math.max(0, eventDate - now);
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("cdDays").textContent = String(d).padStart(2, "0");
+      document.getElementById("cdHours").textContent = String(h).padStart(2, "0");
+      document.getElementById("cdMins").textContent = String(m).padStart(2, "0");
+      document.getElementById("cdSecs").textContent = String(s).padStart(2, "0");
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+   // =========================================================
+    // 4. INTERAKSI SWIPE UP / UNLOCK COVER (MOUSE DRAG + TOUCH + SCROLL + KLIK)
+    // =========================================================
+    const coverScreen = document.getElementById("coverScreen");
+    const unlockTrigger = document.getElementById("unlockTrigger");
+    let startY = 0;
+    let currentY = 0;
+    let isDragging = false;
+
+    function unlockCover() {
+      coverScreen.style.transition = "";
+      coverScreen.style.transform = "";
+      coverScreen.classList.add("unlocked");
+      document.body.classList.remove("locked");
+    }
+
+    unlockTrigger.addEventListener("click", unlockCover);
+
+    // Mendukung geser pakai jari (HP) maupun klik-tahan-geser pakai mouse (PC)
+    coverScreen.addEventListener("pointerdown", (e) => {
+      if (e.target.closest("#unlockTrigger")) return;
+      startY = e.clientY;
+      currentY = e.clientY;
+      isDragging = true;
+      coverScreen.style.transition = "none";
+      coverScreen.setPointerCapture(e.pointerId);
+    });
+
+    coverScreen.addEventListener("pointermove", (e) => {
+      if (!isDragging) return;
+      currentY = e.clientY;
+      const delta = currentY - startY;
+      if (delta < 0) {
+        coverScreen.style.transform = `translateY(${delta}px)`;
+      }
+    });
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      coverScreen.style.transition = "";
+      if (startY - currentY > 70) {
+        unlockCover();
+      } else {
+        coverScreen.style.transform = "";
+      }
+    }
+
+    coverScreen.addEventListener("pointerup", endDrag);
+    coverScreen.addEventListener("pointercancel", endDrag);
+
+    // Dukungan scroll wheel di PC
+    coverScreen.addEventListener("wheel", (e) => {
+      if (e.deltaY > 20) unlockCover();
+    }, { passive: true });
+
+    // =========================================================
+    // 5. SCROLL REVEAL ANIMATION
+    // =========================================================
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    // =========================================================
+    // 6. LOGIKA FORM RSVP & KIRIM KE GOOGLE SHEETS
+    // =========================================================
+    let selectedKehadiran = "Hadir";
+    let selectedTanggal = "4 Desember 2026";
+    let selectedJam = "20:00 WIB";
+
+    const scheduleFields = document.getElementById("scheduleFields");
+
+    function bindSelection(containerId, onSelect) {
+      const container = document.getElementById(containerId);
+      container.querySelectorAll("button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          container.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          onSelect(btn.dataset.value);
+        });
+      });
+    }
+
+    bindSelection("kehadiranControl", (val) => {
+      selectedKehadiran = val;
+      if (val === "Berhalangan") {
+        scheduleFields.classList.add("hidden");
+      } else {
+        scheduleFields.classList.remove("hidden");
+      }
+    });
+
+    bindSelection("tanggalControl", (val) => { selectedTanggal = val; });
+    bindSelection("jamControl", (val) => { selectedJam = val; });
+
+    const rsvpForm = document.getElementById("rsvpForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const formStatus = document.getElementById("formStatus");
+
+    rsvpForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nama = document.getElementById("namaInput").value.trim();
+      const sosmed = document.getElementById("sosmedInput").value.trim();
+
+      if (!nama) {
+        formStatus.className = "form-status error";
+        formStatus.textContent = "Mohon isi Nama Clan / Komunitas / Map / Personal terlebih dahulu.";
+        return;
+      }
+
+      if (GOOGLE_SCRIPT_URL.includes("PASTE_URL")) {
+        formStatus.className = "form-status error";
+        formStatus.textContent = "URL Google Apps Script belum dipasang di kode index.html.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Mengirim konfirmasi...";
+      formStatus.style.display = "none";
+
+      const payload = {
+        nama,
+        kehadiran: selectedKehadiran,
+        tanggal: selectedKehadiran === "Hadir" ? selectedTanggal : "-",
+        jam: selectedKehadiran === "Hadir" ? selectedJam : "-",
+        sosmed: sosmed || "-"
+      };
+
+      try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+
+        formStatus.className = "form-status success";
+        formStatus.textContent = "Terima kasih! Konfirmasi kehadiran kamu sudah tercatat. Sampai jumpa di Grand Opening gue capek. 🙏";
+        rsvpForm.reset();
+      } catch (err) {
+        formStatus.className = "form-status error";
+        formStatus.textContent = "Gagal mengirim data. Coba periksa koneksi internet dan kirim ulang.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Kirim Konfirmasi Kehadiran";
+      }
+    });
+  </script>
+</body>
+</html>
